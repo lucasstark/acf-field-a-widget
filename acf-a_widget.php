@@ -1,12 +1,12 @@
 <?php
 
 /*
-  Plugin Name: Advanced Custom Fields: Widget Area
-  Plugin URI: PLUGIN_URL
-  Description: SHORT_DESCRIPTION
+  Plugin Name: Advanced Custom Fields: A Widget
+  Plugin URI: https://github.com/lucasstark/acf-field-a-widget
+  Description: A field type allowing you to select a pre-existing widget as part of a field group.
   Version: 1.0.0
-  Author: AUTHOR_NAME
-  Author URI: AUTHOR_URL
+  Author: Lucas Stark
+  Author URI: http://www.lucasstark.com/
   License: GPLv2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
