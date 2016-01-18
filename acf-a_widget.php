@@ -40,14 +40,16 @@ add_action( 'acf/register_fields', 'register_fields_a_widget' );
  * Helper function to render the actual output of the Widget
  * @param string $field_value The value of the a_widget field. 
  */
-function acf_a_widget_the_field( $field_value ) {
-		
+function acf_a_widget_the_field( $field_value, $instance_args = array() ) {
 	if ( empty( $field_value ) || !isset( $field_value['instance'] ) || !isset( $field_value['the_widget'] ) || empty($field_value['the_widget']) ) {
 		return;
 	}
 	
 	$acf_widget_id = $field_value['widget_id'];
 	$instance = $field_value['instance'];
+	
+	$instance = array_merge($instance, $instance_args);
+	
 	$widget = $field_value['the_widget'];
 	the_widget( $widget, $instance, array( 'widget_id' => $acf_widget_id ) );
 }
