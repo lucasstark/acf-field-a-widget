@@ -154,7 +154,7 @@ class acf_field_a_widget extends acf_field {
 
 			echo $final;
 		}
-
+		
 		//Now the regular widget fields are rendered.   
 		//Render any additional fields that were added to the widget using advanced custom fields widget fields. 
 		$el = 'div';
