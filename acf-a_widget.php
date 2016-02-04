@@ -4,7 +4,7 @@
   Plugin Name: Advanced Custom Fields: A Widget
   Plugin URI: https://github.com/lucasstark/acf-field-a-widget
   Description: A field type allowing you to select a pre-existing widget as part of a field group.
-  Version: 1.0.1
+  Version: 1.0.2
   Author: Lucas Stark
   Author URI: http://www.lucasstark.com/
   License: GPLv2 or later
@@ -26,14 +26,6 @@ function include_field_types_a_widget( $version ) {
 }
 
 add_action( 'acf/include_field_types', 'include_field_types_a_widget' );
-
-// 3. Include field type for ACF4
-function register_fields_a_widget() {
-
-	include_once('acf-a_widget-v4.php');
-}
-
-add_action( 'acf/register_fields', 'register_fields_a_widget' );
 
 
 /**

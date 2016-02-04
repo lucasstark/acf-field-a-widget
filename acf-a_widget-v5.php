@@ -137,8 +137,8 @@ class acf_field_a_widget extends acf_field {
 
 		$widget = isset( $field['value'] ) && isset( $field['value']['the_widget'] ) ? $field['value']['the_widget'] : $field['widget'];
 		$the_widget = !empty( $wp_widget_factory->widgets[$widget] ) ? $wp_widget_factory->widgets[$widget] : false;
-		$the_widget->id = 'temp';
-		$the_widget->number = '';
+		$the_widget->id = isset($field['value']) && isset($field['value']['widget_id']) ? $field['value']['widget_id'] : 'temp';
+		$the_widget->number = isset($field['value']) && isset($field['value']['number']) ? $field['value']['number'] : '';
 		$instance = apply_filters( 'widget_form_callback', isset( $field['value'] ) && isset( $field['value']['instance'] ) ? $field['value']['instance'] : array(), $the_widget );
 
 		if ( false !== $instance ) {
@@ -225,23 +225,17 @@ class acf_field_a_widget extends acf_field {
 		$the_widget = !empty( $wp_widget_factory->widgets[$widget] ) ? $wp_widget_factory->widgets[$widget] : false;
 
 		if ( !empty( $value ) ) {
-
-
-
+			
 			$value['widget_id_base'] = $the_widget->id_base;
 			$value['number'] = isset( $value['number'] ) ? $value['number'] : uniqid();
 			$value['widget_id'] = $value['widget_id_base'] . '-' . $value['number'];
-
-			$widget = $field['widget'];
-			$value['the_widget'] = $widget;
 			$value['instance'] = array();
-
+			$value['the_widget'] = $widget;
+			
 			if ( isset( $value['widget_fields'] ) && class_exists( $widget ) && method_exists( $widget, 'update' ) ) {
 				$the_widget = new $widget;
 				$value['instance'] = $the_widget->update( $value['widget_fields'], $value['widget_fields'] );
 			}
-
-
 
 			unset( $value['widget_fields'] );
 			// update sub fields
