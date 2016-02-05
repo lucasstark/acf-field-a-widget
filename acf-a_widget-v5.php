@@ -137,8 +137,9 @@ class acf_field_a_widget extends acf_field {
 
 		$widget = isset( $field['value'] ) && isset( $field['value']['the_widget'] ) ? $field['value']['the_widget'] : $field['widget'];
 		$the_widget = !empty( $wp_widget_factory->widgets[$widget] ) ? $wp_widget_factory->widgets[$widget] : false;
-		$the_widget->id = isset($field['value']) && isset($field['value']['widget_id']) ? $field['value']['widget_id'] : 'temp';
-		$the_widget->number = isset($field['value']) && isset($field['value']['number']) ? $field['value']['number'] : '';
+		
+		$the_widget->number = isset($field['value']) && isset($field['value']['number']) ? $field['value']['number'] : uniqid();
+		$the_widget->id = isset($field['value']) && isset($field['value']['widget_id']) ? $field['value']['widget_id'] : $the_widget->id_base . '-' . $the_widget->number;
 		$instance = apply_filters( 'widget_form_callback', isset( $field['value'] ) && isset( $field['value']['instance'] ) ? $field['value']['instance'] : array(), $the_widget );
 
 		if ( false !== $instance ) {
