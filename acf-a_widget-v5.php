@@ -74,7 +74,11 @@ class acf_field_a_widget extends acf_field {
 		$field['sub_fields'] = array();
 		if ( !empty( $field_groups ) ) {
 			foreach ( $field_groups as $group ) {
-				$field['sub_fields'] += acf_get_fields( $group );
+				$these_subfields = acf_get_fields($group);
+
+				foreach($these_subfields as $the_subfield) {
+					$field['sub_fields'][] = $the_subfield;
+				}
 			}
 		}
 
